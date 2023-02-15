@@ -1,0 +1,169 @@
+1 - install git
+
+   58  sudo apt install git
+   59  git
+   
+2- for starting git =>git init on folder that we ant to track
+   60  git init
+   61  ls -ltrha 
+   63  ls -ltrh .git = files that exist on .git directory
+
+git status = for checking branch and traksable file status
+
+3-
+
+changed code -> stage -> commit
+
+commited file => store in git archive
+
+4-create file
+in directory that .git file is it there 
+
+5- git add "specific file" = that we want track it 
+example:git add app.js =>stage level
+
+6-to define author:
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+
+7-git commit -m 'message for yourself' =>commit
+
+8-man git => for help
+
+9-git log =>for checking log of git
+note:git add -A = git add all thing that exist  on there
+
+
+
+HEAD -> last commit that we work on it
+
+10-git diff HEAD =>find changing of file with current commit
+git diff --staged =diffrence with stage
+11-git restore --staged 'name of file'=> to exit from stage level
+
+05:59
+
+12-git checkout -- "name of file" => the file return to last commit
+example:  git checkout -- page3
+=============================================================
+branch:
+we have master branch for adding new feauters to branch we can go to new branch and if adding is successful merge it to master branch
+
+13-git branch= show list of branches
+14-to create new branch => git branch 'name of branch' =>git branch fixpages
+15-to switch another branch => git checkout 'name of branch'
+16-git merge fixpages = merge commit in branch fixpages to master
+
+//end of video5
+=============================================================
+git rm footer.html =>delete one file from git and file system
+
+after creating branches and our problem solved we should delete extra branches after merging
+
+=============================================================
+push=  import code in specific network
+pull=  export code from specific network
+
+
+clone=import resource from git to project
+
+to path that we want :
+
+git clone 'path that we want'
+git clone https://github.com/jadijadi/titap_mystry.gi
+
+ after editing one file we must be git add app.js & git commit -m 'test' 
+ and after
+git push origin master :to insert new changes on our master in origin repository
+
+  origin=(repository that we get clone on it)
+  
+  note:username must be have permision to edit originb file
+  password : should be use personal token 
+  if we edit on origin in internet for get new changes in system :
+  git pull origin master
+  
+  1-add and commit specific file
+  2-go to folder that specific file exist
+  3-git remote add origin(name of clone on repository ) https://github.com/zahrahaghanian/test2(name of repo).git
+  4-git push origin(name of clone on repository) master(name of branch) 
+    note:username must be have permision to edit origin file
+  password : should be use personal token 
+=============================================================
+
+git remote add origin ["link address"] = to add remote repository
+
+git remote -v =view all remotes
+
+git push -u [github repo][name of system branch]
+  
+if someone edit file locally and in online repo edit file may be conflicts will be occoued.  
+in this case when we want to commit localy file we recieve error
+if we git pull ,pulling is done but can not merge it get error again.we have to edit our file to equalization 
+
+to prevent that conflict when two person ediiting one file:(in remote this action may be occours)   
+
+
+
+at the end of video6
+  
+  
+=============================================================
+tag:
+
+after commit file:
+git tag -a v2.0 -m 'firs version with tag . this is what we are running for long time'
+  
+show tags:
+git tag
+
+show tags with start v :
+git tag -l "v*"  
+  
+how to push version in to server :
+ 
+ git push origin [version name]
+ 
+git log => show all changes with commit(hash code)
+git tag (commit hash code)  = tag on specific commit
+=============================================================
+how to signify commit and tag:
+pgp =pretty good privacy  =~ gpg
+  
+gpg --list-keys =show list of all keys(public & private )  
+  
+gpg --gen-key = to generate key  
+  
+git config --global user.name => show username  
+git config --global user.signingKey  => show sighning key  
+  
+gpg --list-secret-keys =>TO SHOW SECRET KEYS
+gpg --list-secret-keys --keyid-format LONG =>TO SHOW SECRET KEYS with it code for example:6747F49204DDEBBD
+git config --global user.signingKey 6747F49204DDEBBD => for using this key for signing commit for this user
+
+git tag -s v2.1 -m 'this is me that releasing new version' =>tag and sign version git 
+git show [specific tag] => show detail of tag with signiture
+git tag -v [specific tag] =>show more detail of tag with signiture with signiture
+git commit -S -m 'message' =>commit with signiture
+
+
+note: if you want sign,you nust sign all of file .
+
+=============================================================
+git-blame
+git blame [name of file] =>how to change file
+git-blame [name of file] -L[number of line] =>to find who changed this line
+git-blame app.js -L8,10
+
+how to search this bug occourd in which commit? this is 3 step:
+1-git bisect start =>let's start
+2-git bisect bad => now is on bat status
+3-git bisect good [hash number of commit that are without bug ] 
+
+git after level 3 give us a commit hash number that we check, if this commit is bad we must answer:git bisect bad
+or if this commit is good we must answer:git bisect good ,while we find bug commit this routine continues.
+
+=============================================================
+git lab = private local git
+fork = several branches. we can fork a project on our repository after edit files we must send merge request to source branch 
